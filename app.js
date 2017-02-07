@@ -19,6 +19,7 @@ var Twitter = new TwitterPackage(secret);
 Twitter.stream('statuses/filter', {track: '#Test505'}, function(stream) {
   stream.on('data', function(tweet) {
     console.log(tweet.text);
+    console.log("echo '4' > /dev/ttyUSB1");
   });
 
   stream.on('error', function(error) {
