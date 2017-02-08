@@ -1,0 +1,22 @@
+{
+  "name": "twitlert",
+  "version": "1.0.0",
+  "description": "Read Twitter and send serial port data",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrespalmo/twitlert.git"
+  },
+  "keywords": [
+    "twitlert"
+  ],
+  "author": "Andrés Palacio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrespalmo/twitlert/issues"
+  },
+  "homepage": "https://github.com/andrespalmo/twitlert#readme"
+}

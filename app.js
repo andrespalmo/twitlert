@@ -1,3 +1,4 @@
+// Twitter Load
 var TwitterPackage = require('twitter');
 
 var secret = {
@@ -7,6 +8,27 @@ var secret = {
   access_token_secret: 'GhRWBx9OtbgdY0D0aremtPlTH8iVUEsrObvnXh6sQSn91'
 }
 var Twitter = new TwitterPackage(secret);
+
+// serial port initialization:
+ var serialport = require('serialport'),
+     SerialPort = serialport.SerialPort,
+     portName = '/dev/cu.wchusbserial1420',
+     portConfig = {
+         baudRate: 9600,
+         // call myPort.on('data') when a newline is received:
+         parser: serialport.parsers.readline('\n')
+     };
+
+  var myPort = new SerialPort(portName, portConfig);
+
+  function openPort() {
+      var twitLedAlert = 1;
+      function sendData() {
+           myPort.write(twitLedAlert);
+           console.log('Sending ' + twitLedAlert + ' out the serial port');
+      }
+      setInterval(sendData, 500);
+  }
 
 /* Twitter.post('statuses/update', {status: '...'},  function(error, tweet, response){
   if(error){
@@ -19,10 +41,9 @@ var Twitter = new TwitterPackage(secret);
 Twitter.stream('statuses/filter', {track: '#Test505'}, function(stream) {
   stream.on('data', function(tweet) {
     console.log(tweet.text);
-    console.log("echo '4' > /dev/ttyUSB1");
+    openPort();
   });
-
   stream.on('error', function(error) {
-    console.log(error);
+    //console.log(error);
   });
 });
