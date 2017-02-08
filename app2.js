@@ -18,7 +18,7 @@ function openPort() {
          myPort.write(twitLedAlert);
          console.log('Sending ' + twitLedAlert + ' out the serial port');
     }
-    setInterval(sendData, 500);
+    setTimeout(sendData, 2000);
 }
 
 openPort();

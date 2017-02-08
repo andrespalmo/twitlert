@@ -27,7 +27,7 @@ var Twitter = new TwitterPackage(secret);
            myPort.write(twitLedAlert);
            console.log('Sending ' + twitLedAlert + ' out the serial port');
       }
-      setInterval(sendData, 500);
+      setTimeout(sendData, 2000);
   }
 
 /* Twitter.post('statuses/update', {status: '...'},  function(error, tweet, response){
@@ -38,7 +38,7 @@ var Twitter = new TwitterPackage(secret);
   // console.log(response);  // Raw response object.
 }); */
 
-Twitter.stream('statuses/filter', {track: '#Test505'}, function(stream) {
+Twitter.stream('statuses/filter', {track: '#8821'}, function(stream) {
   stream.on('data', function(tweet) {
     console.log(tweet.text);
     openPort();
