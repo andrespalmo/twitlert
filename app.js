@@ -30,13 +30,13 @@ var Twitter = new TwitterPackage(secret);
       setTimeout(sendData, 2000);
   }
 
-/* Twitter.post('statuses/update', {status: '...'},  function(error, tweet, response){
-  if(error){
-    console.log(error);
-  }
-  console.log(tweet);  // Tweet body.
-  // console.log(response);  // Raw response object.
-}); */
+// Twitter.post('statuses/update', {status: '...'},  function(error, tweet, response){
+//   if(error){
+//     console.log(error);
+//   }
+//   console.log(tweet);  // Tweet body.
+//   console.log(response);  // Raw response object.
+// });
 
 Twitter.stream('statuses/filter', {track: '#8821'}, function(stream) {
   stream.on('data', function(tweet) {
