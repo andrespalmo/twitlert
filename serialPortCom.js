@@ -1,18 +1,14 @@
 module.exports = {
-  sendData : function(port) {
+  sendData : function(dataValue) {
     var serialport = require('serialport');
-    if (port == 1) {
-      portName = '/dev/cu.wchusbserial1420';
-    } else {
-      portName = '/dev/ttyUSB0';
-    }
+    portName = '/dev/cu.wchusbserial1420';///dev/ttyUSB0,/dev/cu.usbmodem1421
     portConfig = {
       baudRate: 9600,
       parser: serialport.parsers.readline('\n')
     };
     var myPort = new serialport(portName, portConfig);
     function sendData() {
-      myPort.write(1);
+      myPort.write(dataValue);
     }
     function closePort() {
       myPort.close();
